@@ -1,0 +1,6 @@
+---
+# This role will install ansible.
+
+- name: Install ansible package
+  yum: name=ansible state=present
+

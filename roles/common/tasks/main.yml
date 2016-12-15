@@ -1,0 +1,37 @@
+- name: Upgrade all packages
+  yum:
+    name: '*' 
+    state: latest
+
+#- name: Install common package(EPEL, Network Tools, lsof, iftop)
+#  yum: name={{ item }} state=latest
+#  with_items:
+#  - epel-release
+#  - net-tools
+#  - lsof
+#  - iftop
+
+- name: Installing EPEL
+  yum:
+    name: epel-release
+    state: latest
+
+- name: Installing Network Tools
+  yum:
+    name: net-tools
+    state: latest
+
+- name: Installing lsof
+  yum:
+    name: lsof
+    state: latest
+
+- name: Installing iftop
+  yum:
+    name: iftop
+    state: latest
+
+- name: test to see if selinux is running
+  command: getenforce
+  register: sestatus
+  changed_when: false

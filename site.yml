@@ -1,0 +1,26 @@
+- hosts: all
+  roles:
+    - common
+    - python
+
+- hosts: cm_web
+  roles:
+    - nginx
+
+- hosts: cm_web
+  roles:
+    - django
+
+- hosts: cm_server
+  roles:
+    - func_server
+    - ansible
+
+- hosts: cm_db
+  vars:
+     oracle_java_set_as_default: yes
+  roles:
+    - mysql
+    - oracle-java
+    - func_minion
+#    - activemq

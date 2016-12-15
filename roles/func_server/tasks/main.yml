@@ -1,0 +1,8 @@
+---
+# This role will install Func and start Func service certmaster.
+
+- name: Install Func package
+  yum: name=func state=present
+
+- name: Start Func certmaster Service
+  service: name=certmaster state=started enabled=yes

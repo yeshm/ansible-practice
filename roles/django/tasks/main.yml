@@ -1,0 +1,29 @@
+---
+
+- name: Installing mysql-devel
+  yum:
+    name: mysql-devel
+    state: latest
+
+- name: Installing python-devel
+  yum:
+    name: python-devel
+    state: latest
+
+- name: Install (MySQL-python) python package.
+  pip: name=MySQL-python
+
+- name: Install (uWSGI) python package.
+  pip: name=uWSGI
+
+- name: Ensures /etc/uwsgi/ dir exists
+  file: path=/etc/uwsgi/ state=directory
+
+- name: Copy uWSGI configuration
+  template: src=uwsgi.ini dest=/etc/uwsgi/uwsgi.ini
+
+- name: Install (Django) python package. 
+  pip: name=Django
+
+- name: Install (Django Debug Toolbar) python package. 
+  pip: name=django-debug-toolbar
